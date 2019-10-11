@@ -1,0 +1,97 @@
+html {
+    background: #232931;
+    color: #EEEEEE;
+    text-align: center;
+}
+
+#main {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.option {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 20px;
+    background: #393e46;
+    border-radius: 10px;
+    outline: none;
+    margin: 10px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background: #4ecca3;
+    cursor: pointer;
+}
+
+.chartC {
+    background: #393e46;
+    display: flex;
+}
+
+#simulation {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#chart {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+.chartDiv {
+    min-width: 465px;
+    width: 33%;
+}
+
+.lab {
+    font-size: 24px;
+}
+
+#options {
+    width: 25%;
+    min-width: 400px;
+}
+
+#info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+#particle {
+    width: 25%;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.particleInfo {
+    text-align: left;
+    color: #EEEEEE;
+    font-size: 24px;
+    margin-left: auto;
+    width: 75%;
+}
