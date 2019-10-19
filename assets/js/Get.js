@@ -5,13 +5,9 @@ function Get() {
     const accelerationElement = document.getElementById('acceleration');
     const acceleration = accelerationElement.value;
 
-    const accelerationTimeElement = document.getElementById('accelerationTime');
-    const accelerationTime = accelerationTimeElement.value;
-
     return {
         velocity: parseFloat(velocity),
-        acceleration: parseFloat(acceleration),
-        accelerationTime: parseFloat(accelerationTime)
+        acceleration: parseFloat(acceleration)
     }
 }
 
@@ -21,7 +17,6 @@ function Set(d, v, a, at) {
     d = Math.floor(d);
     v = Math.floor(v * 100) / 100;
     a = Math.floor(a * decimalPlace) / decimalPlace;
-    at = Math.floor(at * decimalPlace) / decimalPlace;
 
 
     const displacementVElement = document.getElementById('displacementV');
@@ -32,7 +27,4 @@ function Set(d, v, a, at) {
 
     const accelerationVElement = document.getElementById('accelerationV');
     accelerationVElement.innerText = "Acceleration: " + a;
-
-    const accelerationTimeVElement = document.getElementById('accelerationTimeV');
-    accelerationTimeVElement.innerText = "Acceleration over time: " + at;
 }

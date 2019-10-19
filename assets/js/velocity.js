@@ -12,13 +12,11 @@ const Vdata = [];
 const Adata = [];
 const Tdata = [];
 
-let particleD = 1 + radius;
-
-let particleV = 0;
-
-let particleA = 0;
-
-let particleAT = 0;
+const particle = {
+   s: 0,
+   v: 0,
+   a: 0
+}
 
 let frameCount = 0;
 
@@ -35,6 +33,7 @@ window.onload = () => {
       width = document.body.offsetWidth;
       canvas.canvas.width  = width;
       canvas.canvas.height = height;
+ 
    };
 
  function draw(loop) {
@@ -42,11 +41,9 @@ window.onload = () => {
    // Gets value from slider
    // Either velocity or accelration
    if (Get().velocity > 0) {
-      particleV = Get().velocity;
+      particle.v = Get().velocity;
    } else if (Get().acceleration > 0) {
-      particleA = Get().acceleration;
-   } else {
-      particleAT = Get().accelerationTime;
+      particle.a = Get().acceleration;
    }
 
    // Background
@@ -55,74 +52,94 @@ window.onload = () => {
  
    //  Draws particle
    canvas.beginPath();
-   canvas.arc(particleD, height / 2, radius, 0, Math.PI * 2)
+   canvas.arc(particle.s, height / 2, radius, 0, Math.PI * 2)
    canvas.fillStyle = '#FFFFFF';
    canvas.fill();
 
-   // Adds more acceleration to acceleration
-   particleA += particleAT;
-
    // Adds acceleration
    // Acceleration = change in velocity over time
-   particleV += particleA;
+   particle.v += particle.a;
+
+   // Dealing with floating points erroe
+   particle.v = Math.round(particle.v * 100) / 100;
 
    // Adds velocity
    // Velocity = change in displacement over time
-   particleD += particleV;
+   particle.s += particle.v;
 
-   if (particleD >= width) {
+   particle.s = Math.round(particle.s * 1000) / 1000;
+
+
+   if (particle.s >= width) {
       clearInterval(loop);
+   } 
+
+   if (particle.s >= width && (frameCount * 2) % fps !== 0) {
+      Ddata.push(particle.s);
+      Vdata.push(particle.v);
+      Adata.push(particle.a);
+      Tdata.push(Math.round(frameCount / fps * 10) / 10);
+      addData(displacementChart, Tdata, Ddata);
+      addData(velocityChart, Tdata, Vdata);
+      addData(accelerationChart, Tdata, Adata);
+
+      Set(particle.s, particle.v, particle.a);
    }
 
-   if (frameCount % fps === 0 && particleV > 0) {
-      Ddata.push(particleD);
-      Vdata.push(particleV);
-      Adata.push(particleA);
+   if ( (frameCount * 2) % fps === 0 && particle.v > 0) {
+      Ddata.push(particle.s);
+      Vdata.push(particle.v);
+      Adata.push(particle.a);
       Tdata.push(frameCount / fps);
       addData(displacementChart, Tdata, Ddata);
       addData(velocityChart,     Tdata, Vdata);
       addData(accelerationChart, Tdata, Adata);
 
-      Set(particleD, particleV, particleA, particleAT);
+      Set(particle.s, particle.v, particle.a);
    }
 
-   frameCount++;
+   if (particle.v > 0) {
+         frameCount++;
+   }
+
 }
-   let globalOptions = {
-      scales: {
-         yAxes: [{
-            ticks: {
-               beginAtZero: true,
-               fontColor: '#EEEEEE'
-            },
-            scaleLabel: {
-               display: true,
-               fontColor: '#EEEEEE',
-               labelString: ''
-            }
-         }],
-         xAxes: [{
-            ticks: {
-               beginAtZero: true,
-               fontColor: '#EEEEEE'
-            },
-            scaleLabel: {
-               display: true,
-               labelString: 'Time',
-               fontColor: '#EEEEEE'
-            }
-         }]
-      },
-      legend: {
-         labels: {
+
+let globalOptions = {
+   scales: {
+      yAxes: [{
+         ticks: {
+            beginAtZero: true,
+            fontColor: '#EEEEEE'
+         },
+         scaleLabel: {
+            display: true,
+            fontColor: '#EEEEEE',
+            labelString: ''
+         }
+      }],
+      xAxes: [{
+         ticks: {
+            beginAtZero: true,
+            fontColor: '#EEEEEE'
+         },
+         scaleLabel: {
+            display: true,
+            labelString: 'Time',
             fontColor: '#EEEEEE'
          }
-      },
-      responsive: true,
-      hover: {
-         mode: 'label'
-      },
-   };
+      }]
+   },
+   legend: {
+      labels: {
+         fontColor: '#EEEEEE'
+      }
+   },
+   responsive: true,
+   hover: {
+      mode: 'label'
+   },
+};
+
 function chart() {
 
    
