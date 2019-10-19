@@ -78,7 +78,7 @@ window.onload = () => {
       Ddata.push(particle.s);
       Vdata.push(particle.v);
       Adata.push(particle.a);
-      Tdata.push(frameCount / fps);
+      Tdata.push(Math.round(frameCount / fps * 10) / 10);
       addData(displacementChart, Tdata, Ddata);
       addData(velocityChart, Tdata, Vdata);
       addData(accelerationChart, Tdata, Adata);
