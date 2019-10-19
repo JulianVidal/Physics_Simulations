@@ -26,12 +26,16 @@ let displacementChart;
 
 window.onload = () => {
 
+      // Attaches the canvas to the body
       document.getElementById('canvas').appendChild(canvasElement);
 
+      // Draws the chart
       chart();
 
+         // Gameloop
       const loop = setInterval( () => draw(loop) , 1000 / fps)
       
+         // Changes width to the width of the window
       width = document.body.offsetWidth;
       canvas.canvas.width  = width;
       canvas.canvas.height = height;
