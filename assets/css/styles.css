@@ -1,0 +1,30 @@
+.btn.btn-primary.d-xl-flex {
+  margin: auto;
+}
+
+button, input {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 20px;
+  width: 300px;
+  background: #393e46;
+  border-radius: 10px;
+  outline: none;
+  margin: 10px;
+}
+
+button, input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  background: #4ecca3;
+  cursor: pointer;
+}
+
+.chart {
+  width: 33%;
+  min-width: 465px;
+}
+
