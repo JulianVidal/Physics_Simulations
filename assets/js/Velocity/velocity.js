@@ -24,7 +24,9 @@ let displacementChart;
 
 window.onload = () => {
 
-      document.getElementById('canvas').appendChild(canvasElement);
+     if( location.pathname == "/velocity.html" ) {
+        console.log("Velocity File")
+     document.getElementById('canvas').appendChild(canvasElement);
 
       chart();
 
@@ -33,6 +35,7 @@ window.onload = () => {
       width = document.body.offsetWidth;
       canvas.canvas.width  = width;
       canvas.canvas.height = height;
+    }
  
    };
 
