@@ -1,45 +1,30 @@
-const canvasElement = document.createElement("canvas");
-const canvas = canvasElement.getContext("2d");
-
-const fps = 60;
-let width  = 500;
-const height = 500;
-
-const radius = 4;
-
 const Ddata = [];
 const Vdata = [];
 const Adata = [];
 const Tdata = [];
 
-const particle = {
-   s: 0,
-   v: 0,
-   a: 0
-}
-
-let frameCount = 0;
-
 let displacementChart;
+let velocityChart;
+let accelerationChart;
 
 window.onload = () => {
 
-     if( location.pathname == "/velocity.html" ) {
-        console.log("Velocity File")
-     document.getElementById('canvas').appendChild(canvasElement);
+   if (location.pathname == "/velocity.html") {
+      console.log("Velocity File")
+      document.getElementById('canvas').appendChild(canvasElement);
 
       chart();
 
-      const loop = setInterval( () => draw(loop) , 1000 / fps)
-      
-      width = document.body.offsetWidth;
-      canvas.canvas.width  = width;
-      canvas.canvas.height = height;
-    }
- 
-   };
+      const loop = setInterval(() => draw(loop), 1000 / fps)
 
- function draw(loop) {
+      width = document.body.offsetWidth;
+      canvas.canvas.width = width;
+      canvas.canvas.height = height;
+   }
+
+};
+
+function draw(loop) {
 
    // Gets value from slider
    // Either velocity or accelration
@@ -52,7 +37,7 @@ window.onload = () => {
    // Background
    canvas.fillStyle = '#393e46';
    canvas.fillRect(0, 0, canvas.canvas.width, canvas.canvas.height);
- 
+
    //  Draws particle
    canvas.beginPath();
    canvas.arc(particle.s, height / 2, radius, 0, Math.PI * 2)
@@ -75,7 +60,7 @@ window.onload = () => {
 
    if (particle.s >= width) {
       clearInterval(loop);
-   } 
+   }
 
    if (particle.s >= width && (frameCount * 2) % fps !== 0) {
       Ddata.push(particle.s);
@@ -89,20 +74,20 @@ window.onload = () => {
       Set(particle.s, particle.v, particle.a);
    }
 
-   if ( (frameCount * 2) % fps === 0 && particle.v > 0) {
+   if ((frameCount * 2) % fps === 0 && particle.v > 0) {
       Ddata.push(particle.s);
       Vdata.push(particle.v);
       Adata.push(particle.a);
       Tdata.push(frameCount / fps);
       addData(displacementChart, Tdata, Ddata);
-      addData(velocityChart,     Tdata, Vdata);
+      addData(velocityChart, Tdata, Vdata);
       addData(accelerationChart, Tdata, Adata);
 
       Set(particle.s, particle.v, particle.a);
    }
 
    if (particle.v > 0) {
-         frameCount++;
+      frameCount++;
    }
 
 }
@@ -145,7 +130,7 @@ let globalOptions = {
 
 function chart() {
 
-   
+
    globalOptions.scales.yAxes[0].scaleLabel.labelString = "Displacement";
 
    const contextDisplacement = document.getElementById("displacementChart").getContext('2d');
