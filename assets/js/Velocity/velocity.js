@@ -38,6 +38,10 @@ function Velocitydraw(loop) {
    if (particle.s >= width) {
       clearInterval(loop);
    }
+    
+   if (particle.s < 0) {
+      clearInterval(loop);
+   }
 
    if (particle.s >= width && (frameCount * 2) % fps !== 0) {
       Ddata.push(particle.s);
