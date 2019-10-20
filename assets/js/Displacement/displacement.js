@@ -1,6 +1,6 @@
 const origin = {
-    x: width / 2,
-    y: height / 2
+    x: 0,
+    y: 0
 }
 
 function Displacementdraw() {

@@ -20,6 +20,7 @@ window.onload = () => {
 
     if (location.pathname == "/velocity.html") {
         console.log("Velocity File")
+   
         document.getElementById('canvas').appendChild(canvasElement);
 
         chart();
@@ -59,6 +60,22 @@ window.onload = () => {
             particle.x = event.offsetX;
             particle.y = event.offsetY;
         }
+    }
+    
+    if (location.pathname == "/acceleration.html") {
+        
+        console.log("Acceleration File");
+        
+        // Appends canvaas to div
+         document.getElementById('canvas').appendChild(canvasElement);
+        
+        
+        const loop = setInterval( () => Accelerationdraw(loop), 1000/fps);
+        
+        width = document.body.offsetWidth;
+        canvas.canvas.width = width;
+        canvas.canvas.height = height;
+        
     }
 
 };

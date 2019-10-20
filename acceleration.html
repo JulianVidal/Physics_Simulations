@@ -11,12 +11,23 @@
 
 <body style="background-color: inherit;color: inherit;">
     <h1 class="text-center">Acceleration</h1>
+    <div id="canvas"></div>
+    <div class="d-flex justify-content-center align-content-center flex-wrap" style="margin-top: 50px;">
+        <div class="chart"><canvas id="displacementChart"></canvas>
+</div>
+        <div class="chart"><canvas id="velocityChart"></canvas>
+</div>
+        <div class="chart"><canvas id="accelerationChart"></canvas>
+</div>
+    </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/setup.js"></script>
     <script src="assets/js/Velocity/Get.js"></script>
     <script src="assets/js/Velocity/velocity.js"></script>
     <script src="assets/js/Displacement/displacement.js"></script>
+    <script src="assets/js/Acceleration/acceleration.js"></script>
+    <script src="assets/js/setup.js"></script>
+    <script src="assets/js/charting.js"></script>
 </body>
 
 </html>
