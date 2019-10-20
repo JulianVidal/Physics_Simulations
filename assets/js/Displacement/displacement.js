@@ -3,37 +3,7 @@ const origin = {
     y: height / 2
 }
 
-window.onload = () => {
-    console.log("Displacement Files");
-
-    // Appends canvaas to div
-    document.getElementById('canvas').appendChild(canvasElement);
-
-    // Game loop
-    const loop = setInterval(() => draw(loop), 1000 / fps);
-
-    // Width and Height of the canvas
-    width = document.body.offsetWidth;
-    canvas.canvas.width = width;
-    canvas.canvas.height = height;
-
-    // Adds y position for the particle
-    origin.y = height / 2;
-    origin.x = width / 2;
-
-    particle.y = origin.y;
-    particle.x = origin.x;
-
-
-
-    // Mouse pressed
-    document.getElementById("canvas").onmousedown = event => {
-        particle.x = event.offsetX;
-        particle.y = event.offsetY;
-    }
-}
-
-function draw() {
+function Displacementdraw() {
     const dist = Math.round(Math.sqrt((particle.x - origin.x) * (particle.x - origin.x) + (particle.y - origin.y) * (particle.y - origin.y)));
 
     // Background

@@ -7,32 +7,13 @@ let displacementChart;
 let velocityChart;
 let accelerationChart;
 
-window.onload = () => {
-
-   if (location.pathname == "/velocity.html") {
-      console.log("Velocity File")
-      document.getElementById('canvas').appendChild(canvasElement);
-
-      chart();
-
-      const loop = setInterval(() => draw(loop), 1000 / fps)
-
-      width = document.body.offsetWidth;
-      canvas.canvas.width = width;
-      canvas.canvas.height = height;
-   }
-
-};
-
-function draw(loop) {
+function Velocitydraw(loop) {
 
    // Gets value from slider
    // Either velocity or accelration
-   if (Get().velocity > 0) {
+   if (Get().velocity != 0) {
       particle.v = Get().velocity;
-   } else if (Get().acceleration > 0) {
-      particle.a = Get().acceleration;
-   }
+   } 
 
    // Background
    canvas.fillStyle = '#393e46';
@@ -43,10 +24,6 @@ function draw(loop) {
    canvas.arc(particle.s, height / 2, radius, 0, Math.PI * 2)
    canvas.fillStyle = '#FFFFFF';
    canvas.fill();
-
-   // Adds acceleration
-   // Acceleration = change in velocity over time
-   particle.v += particle.a;
 
    // Dealing with floating points erroe
    particle.v = Math.round(particle.v * 100) / 100;
@@ -74,7 +51,7 @@ function draw(loop) {
       Set(particle.s, particle.v, particle.a);
    }
 
-   if ((frameCount * 2) % fps === 0 && particle.v > 0) {
+   if ((frameCount * 2) % fps === 0 && particle.v != 0) {
       Ddata.push(particle.s);
       Vdata.push(particle.v);
       Adata.push(particle.a);
@@ -86,7 +63,7 @@ function draw(loop) {
       Set(particle.s, particle.v, particle.a);
    }
 
-   if (particle.v > 0) {
+   if (particle.v != 0) {
       frameCount++;
    }
 
