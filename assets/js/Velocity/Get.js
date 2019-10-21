@@ -1,21 +1,35 @@
-function Get() {
-    const velocityElement = document.getElementById('velocity');
-    const velocity = velocityElement.value;
+function Get(ids) {
+    const values = [];
+    
+    ids.forEach(element => {
+        const el = document.getElementById(element);
+        const val = parseFloat(el.value);
+        values.unshift(val);
+    });
 
-    return {
-        velocity: parseFloat(velocity)
-    }
+    return values;
 }
 
-function Set(d, v, a, at) {
-    const decimalPlace = 10000;
+function Set(d, v, a) {
 
     d = Math.floor(d);
-    v = Math.floor(v * 100) / 100;
+    v = Math.floor(v * 100 )  / 100;
+    a = Math.floor(a * 1000)  / 1000
 
     const displacementVElement = document.getElementById('displacementV');
-    displacementVElement.innerText = "Displacement: " + d;
-
     const velocityVElement = document.getElementById('velocityV');
-    velocityVElement.innerText = "Velocity: " + v;
+    const accelerationVElement = document.getElementById('accelerationV');
+
+    if (displacementVElement) {
+        displacementVElement.innerText = "Displacement: " + d;
+    }
+
+    if (velocityVElement) {
+        velocityVElement.innerText = "Velocity: " + v;
+    }
+
+    if (accelerationVElement) {
+        accelerationVElement.innerText = "Acceleration: " + a;
+    }
+
 }

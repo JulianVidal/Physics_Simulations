@@ -2,8 +2,8 @@ function Velocitydraw(loop) {
 
    // Gets value from slider
    // Either velocity or accelration
-   if (Get().velocity != 0) {
-      particle.v = Get().velocity;
+   if (Get(["velocity"])[0] != 0) {
+      particle.v = Get(["velocity"])[0];
    } 
 
    // Background
@@ -15,9 +15,6 @@ function Velocitydraw(loop) {
    canvas.arc(particle.s, height / 2, radius, 0, Math.PI * 2)
    canvas.fillStyle = '#FFFFFF';
    canvas.fill();
-
-   // Dealing with floating points erroe
-   particle.v = Math.round(particle.v * 100) / 100;
 
    // Adds velocity
    // Velocity = change in displacement over time
@@ -38,7 +35,7 @@ function Velocitydraw(loop) {
       Ddata.push(particle.s);
       Vdata.push(particle.v);
       Adata.push(particle.a);
-      Tdata.push(Math.round(frameCount / fps * 10) / 10);
+      Tdata.push(Math.round(frameCount / fps * 100) / 100);
       addData(displacementChart, Tdata, Ddata);
       addData(velocityChart, Tdata, Vdata);
       addData(accelerationChart, Tdata, Adata);

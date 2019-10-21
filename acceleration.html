@@ -7,11 +7,22 @@
     <title>Physics_SimulationsBSS</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
 </head>
 
 <body style="background-color: inherit;color: inherit;">
     <h1 class="text-center">Acceleration</h1>
     <div id="canvas"></div>
+    <div class="d-flex justify-content-around align-content-around flex-wrap justify-content-xl-center">
+        <div class="d-xl-flex flex-column justify-content-xl-center align-items-xl-center" style="width: 25%;min-width: 400px;"><label style="margin-top: 20px;font-size: 24px;">Acceleration</label><input type="range" id="acceleration" style="background-color: #393e46;" min="0" max="0.1" value="0" step="0.001"></div>
+        <div class="d-xl-flex flex-column justify-content-around justify-content-xl-center align-items-xl-start"
+            style="margin-top: 20px;width: 25%;min-width: 400px;font-size: 24px;">
+            <h2 style="font-size: 34px;">Particle:</h2>
+            <p class="d-xl-flex" id="displacementV" style="font-size: inherit;">Displacement: 0</p>
+            <p id="velocityV" style="font-size: inherit;">Velocity: 0</p>
+            <p id="accelerationV" style="font-size: inherit;">Acceleration: 0</p>
+        </div>
+    </div>
     <div class="d-flex justify-content-center align-content-center flex-wrap" style="margin-top: 50px;">
         <div class="chart"><canvas id="displacementChart"></canvas>
 </div>
@@ -26,8 +37,8 @@
     <script src="assets/js/Velocity/velocity.js"></script>
     <script src="assets/js/Displacement/displacement.js"></script>
     <script src="assets/js/Acceleration/acceleration.js"></script>
-    <script src="assets/js/setup.js"></script>
     <script src="assets/js/charting.js"></script>
+    <script src="assets/js/setup.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,8 @@
 function Accelerationdraw(loop) {
+   if (Get(["acceleration"])[0] != 0) {
+    particle.a = Get(["acceleration"])[0];
+   } 
+    
     // Background
     canvas.fillStyle = '#393e46';
     canvas.fillRect(0, 0, canvas.canvas.width, canvas.canvas.height);
@@ -8,16 +12,24 @@ function Accelerationdraw(loop) {
     canvas.arc(particle.s, height / 2, radius, 0, Math.PI * 2)
     canvas.fillStyle = '#FFFFFF';
     canvas.fill();
+ 
+    particle.v = V(0, particle.a * 60 * 60, frameCount / fps);
+    
+    particle.s = S(0, particle.a * 60 * 60, frameCount / fps);
 
     if (particle.s >= width) {
         clearInterval(loop);
     }
+    
+   if (particle.s < 0) {
+      clearInterval(loop);
+   }
 
     if (particle.s >= width && (frameCount * 2) % fps !== 0) {
         Ddata.push(particle.s);
         Vdata.push(particle.v);
         Adata.push(particle.a);
-        Tdata.push(Math.round(frameCount / fps * 10) / 10);
+        Tdata.push(Math.round(frameCount / fps * 100) / 100);
         addData(displacementChart, Tdata, Ddata);
         addData(velocityChart, Tdata, Vdata);
         addData(accelerationChart, Tdata, Adata);
@@ -25,7 +37,7 @@ function Accelerationdraw(loop) {
         Set(particle.s, particle.v, particle.a);
      }
   
-     if ((frameCount * 2) % fps === 0 && particle.v != 0) {
+     if ((frameCount * 2) % fps === 0 && particle.a != 0) {
         Ddata.push(particle.s);
         Vdata.push(particle.v);
         Adata.push(particle.a);
@@ -37,8 +49,16 @@ function Accelerationdraw(loop) {
         Set(particle.s, particle.v, particle.a);
      }
   
-     if (particle.v != 0) {
+     if (particle.a != 0) {
         frameCount++;
      }
 
 }
+
+  function V(u, a, t) {
+    return u + a * t;
+  }
+ 
+  function S(u, a, t) {
+    return u * t + 0.5 * a * t * t;
+  }

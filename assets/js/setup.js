@@ -69,7 +69,8 @@ window.onload = () => {
         // Appends canvaas to div
          document.getElementById('canvas').appendChild(canvasElement);
         
-        
+        chart();
+
         const loop = setInterval( () => Accelerationdraw(loop), 1000/fps);
         
         width = document.body.offsetWidth;
