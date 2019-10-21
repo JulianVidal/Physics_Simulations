@@ -18,9 +18,9 @@ function Velocitydraw(loop) {
 
    // Adds velocity
    // Velocity = change in displacement over time
-   particle.s += particle.v;
+   particle.s += particle.v / fps;
 
-   particle.s = Math.round(particle.s * 1000) / 1000;
+   particle.s = Math.round(particle.s * 10000) / 10000;
 
 
    if (particle.s >= width) {
