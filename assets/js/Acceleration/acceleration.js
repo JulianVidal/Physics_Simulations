@@ -66,7 +66,6 @@ function Metrics() {
 
     let a = particle.a
     
-    console.log("m / s");
     console.log("Displacement: " + s,
                 "Velocity: " + v,
                 "Acceleration: " + particle.a);
