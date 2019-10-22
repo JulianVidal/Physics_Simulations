@@ -10,26 +10,14 @@ function Get(ids) {
     return values;
 }
 
-function Set(d, v, a) {
+function Set(elements) {
 
-    d = Math.floor(d);
-    v = Math.floor(v * 100 )  / 100;
-    a = Math.floor(a * 1000)  / 1000
+    elements.forEach( el => {
+        const parent = document.getElementById(el.id);
 
-    const displacementVElement = document.getElementById('displacementV');
-    const velocityVElement = document.getElementById('velocityV');
-    const accelerationVElement = document.getElementById('accelerationV');
-
-    if (displacementVElement) {
-        displacementVElement.innerText = "Displacement: " + d;
-    }
-
-    if (velocityVElement) {
-        velocityVElement.innerText = "Velocity: " + v;
-    }
-
-    if (accelerationVElement) {
-        accelerationVElement.innerText = "Acceleration: " + a;
-    }
-
+        if (parent) {
+            parent.innerText = el.txt;
+        }
+    });
+    
 }

@@ -34,8 +34,19 @@ function Accelerationdraw(loop) {
         addData(displacementChart, Tdata, Ddata);
         addData(velocityChart, Tdata, Vdata);
         addData(accelerationChart, Tdata, Adata);
-  
-        Set(particle.s, particle.v, particle.a);
+        
+     Set([{
+         id: "displacementV",
+         txt: "Displacement: " + Math.round(particle.s)
+      }, 
+      {
+         id: "velocityV",
+         txt: "Velocity: " + Math.round(particle.v * 10) / 10
+      },
+      {
+         id: "accelerationV",
+         txt: "Acceleration: " + particle.a
+      }]);  
         
         Metrics();
      }
@@ -49,7 +60,18 @@ function Accelerationdraw(loop) {
         addData(velocityChart, Tdata, Vdata);
         addData(accelerationChart, Tdata, Adata);
   
-        Set(particle.s, particle.v, particle.a);
+      Set([{
+         id: "displacementV",
+         txt: "Displacement: " + Math.round(particle.s)
+      }, 
+      {
+         id: "velocityV",
+         txt: "Velocity: " + Math.round(particle.v * 10) / 10
+      },
+      {
+         id: "accelerationV",
+         txt: "Acceleration: " + particle.a
+      }]);     
      }
   
      if (particle.a != 0) {
@@ -66,7 +88,6 @@ function Metrics() {
 
     let a = particle.a
     
-    console.log("m / s");
     console.log("Displacement: " + s,
                 "Velocity: " + v,
                 "Acceleration: " + particle.a);

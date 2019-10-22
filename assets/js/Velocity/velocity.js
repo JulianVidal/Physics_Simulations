@@ -40,7 +40,14 @@ function Velocitydraw(loop) {
       addData(velocityChart, Tdata, Vdata);
       addData(accelerationChart, Tdata, Adata);
 
-      Set(particle.s, particle.v, particle.a);
+      Set([{
+         id: "displacementV",
+         txt: "Displacement: " + Math.round(particle.s)
+      }, 
+      {
+         id: "velocityV",
+         txt: "Velocity: " + particle.v
+      }]);
    }
 
    if ((frameCount * 2) % fps === 0 && particle.v != 0) {
@@ -52,8 +59,14 @@ function Velocitydraw(loop) {
       addData(velocityChart, Tdata, Vdata);
       addData(accelerationChart, Tdata, Adata);
 
-      Set(particle.s, particle.v, particle.a);
-   }
+      Set([{
+         id: "displacementV",
+         txt: "Displacement: " + Math.round(particle.s)
+      }, 
+      {
+         id: "velocityV",
+         txt: "Velocity: " + particle.v
+      }]);   }
 
    if (particle.v != 0) {
       frameCount++;
