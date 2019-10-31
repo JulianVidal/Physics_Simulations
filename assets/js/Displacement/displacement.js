@@ -11,11 +11,12 @@ function Displacementdraw() {
     canvas.fillRect(0, 0, canvas.canvas.width, canvas.canvas.height);
 
     // Draws line
-    canvas.moveTo(origin.x, origin.y);
-    canvas.lineTo(particle.x, particle.y);
+    const line = new Path2D();
+    line.moveTo(origin.x, origin.y);
+    line.lineTo(particle.x, particle.y);
     canvas.lineWidth = 1.5;
     canvas.strokeStyle = "white";
-    canvas.stroke();
+    canvas.stroke(line);
     canvas.moveTo(0, 0);
 
     // Draws Origin

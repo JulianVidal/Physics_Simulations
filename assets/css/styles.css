@@ -28,3 +28,14 @@ button, input::-webkit-slider-thumb {
   min-width: 465px;
 }
 
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input {
+  Height: 35px;
+  padding: 10px;
+  color: inherit;
+}
+

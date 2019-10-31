@@ -13,6 +13,19 @@
 <body style="color: inherit;background-color: inherit;">
     <h1 class="text-center">Vectors</h1>
     <div id="canvas"></div>
+    <div class="text-center"><button class="btn btn-success border rounded border-success" id="extraVector" type="button" style="width: 300px;height: 40px;">Extra Vector</button>
+        <div id="inputs">
+            <div class="d-md-flex justify-content-md-center align-items-md-center" style="height: 100px;width: 761px;margin: auto;">
+                <div style="margin: auto;width: 50%;">
+                    <h1>Magnitude</h1>
+                </div>
+                <div style="margin: auto;width: 50%;">
+                    <h1 style="margin-right: 60px;">Angle</h1>
+                </div>
+            </div><input class="border-secondary magnitude input" type="number" value="1"><input class="border-secondary angle input" type="number" value="0">
+            <div style="color: inherit;"><input class="border-secondary magnitude input" type="number" value="2"><input class="border-secondary angle input" type="number" value="30"></div>
+        </div>
+        <div style="color: inherit;"></div><button class="btn btn-primary" id="addVector" type="button" style="width: 300px;height: 40px;">Add Vector</button></div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/Velocity/Get.js"></script>
@@ -20,8 +33,10 @@
     <script src="assets/js/Displacement/displacement.js"></script>
     <script src="assets/js/Acceleration/acceleration.js"></script>
     <script src="assets/js/charting.js"></script>
-    <script src="assets/js/setup.js"></script>
     <script src="assets/js/SUVAT.js"></script>
+    <script src="assets/js/Vector/vector.js"></script>
+    <script src="assets/js/setup.js"></script>
+    <script src="assets/js/Vector/VectorObj.js"></script>
 </body>
 
 </html>

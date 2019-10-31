@@ -78,5 +78,30 @@ window.onload = () => {
         canvas.canvas.height = height;
         
     }
+    
+        if (location.pathname == "/vector.html") {
+        
+        console.log("Vector File");
+        
+        // Appends canvaas to div
+         document.getElementById('canvas').appendChild(canvasElement);
+        
+        const loop = setInterval( () => Vectordraw(loop), 1000/fps);
+        
+        width = document.body.offsetWidth;
+        canvas.canvas.width = width;
+        canvas.canvas.height = height;
+       
+        origin.x = width / 2;
+        origin.y = height / 2;
+            
+        const extra = document.getElementById('extraVector');
+            
+        extra.addEventListener("click", extraVector);
+        
+        const add = document.getElementById('addVector');
+         add.addEventListener("click", addVectors);
+            
+    }
 
 };
