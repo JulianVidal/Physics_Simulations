@@ -2,9 +2,9 @@ const vectors = [];
 let adding;
 
 function Vectordraw(loop) {
-     if (frameCount % (fps * 2) == 0) {
         getVectors();
-    }   
+    
+
     // Background
     canvas.fillStyle = '#393e46';
     canvas.fillRect(0, 0,canvas.canvas.width, canvas.canvas.height);
@@ -31,22 +31,30 @@ function Vectordraw(loop) {
                 
          
     }
-    const end = vectors[vectors.length - 1].endPoint;
 
-    end.x -= origin.x;
-    end.y -= origin.y;
         
-    end.x /= 50;
-    end.y /= -50;
+    let resultant;
+    for (let i = 0; i < vectors.length; i++) {
+
+        if (i == 0) {
+            resultant = vectors[0];
+        } else {
+            resultant = Vector.add(resultant, vectors[i]);
+        }
+    }
     
-    const mag = Math.sqrt(end.x * end.x  + end.y * end.y);
-    
-    const ang = Math.atan(end.y/end.x)* (180 / Math.PI);
-    
-    const addedVector = new Vector(mag, ang);
-    
-    addedVector.draw(origin, true, 'YellowGreen');
-      
+    resultant.draw(origin, true, 'YellowGreen');
+
+   Set(
+        [{
+            id: "magnitude",
+            txt: "magnitude " + (Math.floor(resultant.magnitude * 10) / 10)
+        }, 
+        {
+            id: "angle",
+            txt: "angle " + (Math.floor(resultant.angle * (180 / Math.PI)))
+        }]
+    );
     }
     
     frameCount++;
@@ -95,6 +103,12 @@ function extraVector() {
 
     div.appendChild(magnitude);
     div.appendChild(angle);
+    
+    /*const inputFields = document.getElementsByClassName("input");
+
+    for (let i = 0; i < inputFields.length; i++) {
+    console.log(inputFields[i].value);
+    }*/
 
 }
 

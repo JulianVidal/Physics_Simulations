@@ -17,12 +17,6 @@ class Vector {
             const Y = new Vector(Math.abs(Vector.resolve(v1).y + Vector.resolve(v2).y), Vector.resolve(v1).y + Vector.resolve(v2).y >= 0 ? 90 : 270);
             const X = new Vector(Math.abs(Vector.resolve(v1).x + Vector.resolve(v2).x), Vector.resolve(v1).x + Vector.resolve(v2).x >= 0 ? 0 : 180);
 
-            // Draws resolved vectors
-            if (resolvedNetForceB) {
-                Y.draw(particle, true, color(0, 255, 0));
-                X.draw(particle, true, color(0, 255, 0));
-            }
-
             // Magnitude of added vector ( sqrt( x^2 + y^2 ) )
             const magnitude = Math.hypot(X.magnitude, Y.magnitude);
 
@@ -31,7 +25,7 @@ class Vector {
             let opp = X.angle > Y.angle ? X : Y;
 
             //  360 = 0 so 270 is the lowest angle
-            if (Y.angle === 270 * Math.PI / 180) {
+            if (Y.angle === 270 * Math.PI / 180 && X.angle === 0) {
                 adj = Y;
                 opp = X;
             }

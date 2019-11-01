@@ -101,7 +101,7 @@ window.onload = () => {
         
         const add = document.getElementById('addVector');
          add.addEventListener("click", addVectors);
-            
+                        
     }
 
 };
