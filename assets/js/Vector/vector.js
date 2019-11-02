@@ -22,6 +22,7 @@ function Vectordraw(loop) {
         vector.draw({x: origin.x, y: origin.y}, true, '#FFF');
         });
     } else {
+        
             for (let i = 0; i < vectors.length; i++) {
         if (i == 0) {
             vectors[i].draw({x: origin.x, y: origin.y}, true, '#FFF');
