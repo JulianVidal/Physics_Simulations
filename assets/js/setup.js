@@ -18,7 +18,7 @@ const particle = {
 window.onload = () => {
     console.log(location.pathname);
 
-    if (location.pathname == "/velocity.html") {
+    if (location.pathname.endsWith("velocity.html")) {
         console.log("Velocity File")
    
         document.getElementById('canvas').appendChild(canvasElement);
@@ -32,7 +32,7 @@ window.onload = () => {
         canvas.canvas.height = height;
     }
 
-    if (location.pathname.endsWith("/displacement.html")) {
+    if (location.pathname.endsWith("displacement.html")) {
         console.log("Displacement Files");
 
         // Appends canvaas to div
@@ -61,9 +61,7 @@ window.onload = () => {
             particle.y = event.offsetY;
         }
     }
-    
-    if (location.pathname == "/acceleration.html") {
-        
+    if (location.pathname.endsWith("acceleration.html")) {        
         console.log("Acceleration File");
         
         // Appends canvaas to div
@@ -79,7 +77,7 @@ window.onload = () => {
         
     }
     
-        if (location.pathname == "/vector.html") {
+    if (location.pathname.endsWith("vector.html")) {        
         
         console.log("Vector File");
         
