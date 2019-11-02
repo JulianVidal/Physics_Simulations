@@ -32,7 +32,7 @@ window.onload = () => {
         canvas.canvas.height = height;
     }
 
-    if (location.pathname == "/displacement.html") {
+    if (location.pathname.endsWith("/displacement.html")) {
         console.log("Displacement Files");
 
         // Appends canvaas to div
