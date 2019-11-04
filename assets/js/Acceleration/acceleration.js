@@ -1,8 +1,17 @@
+let lastAccleration = 0;
 function Accelerationdraw(loop) {
    if (Get(["acceleration"])[0] != 0) {
     particle.a = Get(["acceleration"])[0];
-   } 
     
+    if (lastAccleration != particle.a) {
+        frameCount = 0;
+        Ddata.splice(0, Ddata.length);
+        Vdata.splice(0, Vdata.length);
+        Adata.splice(0, Adata.length);
+        Tdata.splice(0, Tdata.length);
+    }
+   } 
+    lastAccleration = particle.a;
     // Background
     canvas.fillStyle = '#393e46';
     canvas.fillRect(0, 0, canvas.canvas.width, canvas.canvas.height);
